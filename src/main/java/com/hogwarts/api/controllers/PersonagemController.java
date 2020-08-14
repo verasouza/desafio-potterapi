@@ -39,8 +39,32 @@ public class PersonagemController {
 	}
 	
 	@GetMapping(value="/listarcadastrados")
-	public List<PersonagemModel> getAllPersonagens(){
+	public List<PersonagemModel> getAllPersonagensCadastrados(){
 		List<Personagem> personagens = service.findAll();
+		
+		return service.getListaPersonagens(personagens);
+		
+	}
+	
+	@GetMapping(value="/listarpersonagens")
+	public ResponseEntity<List<Personagem>> getAllPersonagens(){
+		List<Personagem> personagens = service.getAllCharacatersFromHogwarts();
+		
+		return ResponseEntity.ok().body(personagens);
+		
+	}
+	
+	@GetMapping(value="/procurarporcasa")
+	public List<PersonagemModel> getPersonagemByHouse(@RequestParam("house") String house){
+		List<Personagem> personagens = service.findByHouse(house);
+		
+		return service.getListaPersonagens(personagens);
+		
+	}
+	
+	@GetMapping(value="/procurarporescola")
+	public List<PersonagemModel> getPersonagemBySchool(@RequestParam("school") String school){
+		List<Personagem> personagens = service.findBySchool(school);
 		
 		return service.getListaPersonagens(personagens);
 		

@@ -27,4 +27,24 @@ public class PersonagemRepositoryImpl implements PersonagemRepositoryCustom {
 		return resultado;
 	}
 
+	@Override
+	public List<Personagem> findByHouse(String house) {
+		Query query = entityManager.createQuery("SELECT p FROM Personagem p WHERE LOWER (p.house) = :house",
+				Personagem.class);
+		query.setParameter("house", house);
+		
+		List<Personagem> resultado = query.getResultList();
+		return resultado;
+	}
+
+	@Override
+	public List<Personagem> findBySchool(String school) {
+		Query query = entityManager.createQuery("SELECT p FROM Personagem p WHERE LOWER (p.school) = :school",
+				Personagem.class);
+		query.setParameter("school", school);
+		
+		List<Personagem> resultado = query.getResultList();
+		return resultado;
+	}
+
 }

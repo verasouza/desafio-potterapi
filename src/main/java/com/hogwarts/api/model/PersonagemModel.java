@@ -1,5 +1,8 @@
 package com.hogwarts.api.model;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hogwarts.api.entity.Personagem;
 
 import lombok.AllArgsConstructor;
@@ -9,7 +12,10 @@ import lombok.Setter;
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class PersonagemModel {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PersonagemModel implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String name;
 	private String role;

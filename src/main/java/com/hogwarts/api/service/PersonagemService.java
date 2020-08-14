@@ -1,5 +1,6 @@
 package com.hogwarts.api.service;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.hogwarts.api.entity.Personagem;
 import com.hogwarts.api.model.PersonagemModel;
 import com.hogwarts.api.repository.PersonagemRepository;
@@ -23,13 +27,14 @@ public class PersonagemService {
 	
 	@Value("${apiurl}")
 	private String apiurl;
+	@Value("${key}")
+	private String apiKey;
+	
 	private static final String SORTINGHAT = "sortingHat";
+	private static final String CHARACTERS = "characters";
 	
 	private RestTemplate template = new RestTemplate();
 	
-	public List<Personagem> findByName(String name){
-		return personagemRepo.findByName(name);
-	}
 	
 	public List<Personagem> findByNameDescription(String name){
 		return personagemImpl.findByName(name);
@@ -37,6 +42,14 @@ public class PersonagemService {
 	
 	public List<Personagem> findAll(){
 		return personagemRepo.findAll();
+	}
+	
+	public List<Personagem> findByHouse(String house){
+		return personagemImpl.findByHouse(house);
+	}
+	
+	public List<Personagem> findBySchool(String school){
+		return personagemImpl.findBySchool(school);
 	}
 	
 	public Personagem findById(Long id) {
@@ -84,8 +97,34 @@ public class PersonagemService {
 	
 	public String sortingHat() {
 		String urlSorting = apiurl + SORTINGHAT;
-		return template.getForObject(urlSorting, String.class);
+		String house = template.getForObject(urlSorting, String.class);
+		house = house.replaceAll("\"", "");
+		return house;
 		
+	}
+	
+	public List<Personagem> getAllCharacatersFromHogwarts() {
+		StringBuilder url = new StringBuilder("");
+		url.append(apiurl);
+		url.append(CHARACTERS);
+		url.append("/?key=");
+		url.append(apiKey);
+
+		String dadosPersonagens = template.getForObject(url.toString(), String.class);
+		Gson gson = new GsonBuilder().create();
+
+		// encontra o tipo correto da classe
+		Type tipoListaPersonagem = new TypeToken<ArrayList<Personagem>>() {
+		}.getType();
+		List<Personagem> personagens = gson.fromJson(dadosPersonagens, tipoListaPersonagem);
+		
+		//salvar os personagens da api no banco
+		personagens.forEach(p ->{
+			personagemRepo.save(p);
+		});
+
+		return personagens;
+
 	}
 	
 	public List<PersonagemModel> getListaPersonagens(List<Personagem> personagens){
