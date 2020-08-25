@@ -1,0 +1,55 @@
+#page-landing{
+    width:100vw;
+    height: 100vh;
+    background-image: url('/images/hp.jpg');
+}
+
+.button-group{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.card-action a{
+    color: var(--color-text);
+    background: var(--color-primary);
+    transition: background 0.2s;
+    font: 'Crimson Text'
+}
+
+.card-action a:hover{
+    background: var(--color-primary-dark);
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 15rem;
+    left: 25rem;
+}
+
+
+#container h2{
+    font-weight: 700;
+    font-size: 5rem;
+}
+
+.card-content p{
+    padding: 0.2rem;
+    font-size: 2rem;
+    line-height: 2.8rem;
+}
+
+.card .card-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+
+
+.btn i, .btn-large i, .btn-small i, .btn-floating i, .btn-large i, .btn-small i, .btn-flat i {
+    font-size: 2.3rem;
+    line-height: inherit;
+}

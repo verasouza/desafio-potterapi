@@ -1,0 +1,76 @@
+:root{
+    --color-background:#f1f1f1;
+    --color-primary: #873436;
+    --color-primary-light: #cd7e80;
+    --color-primary-dark:#6e2b2c;
+    --color-secondary: #c7b38b;
+    --color-secondary-darker: #bda575;
+    --color-secondary-light:#d6c7a9;
+    --color-text: #ffffff;
+    --color-text-secondary: #000000;
+
+    font-size:60% ;
+    font-family: 'Crimson Text';
+    background-image: url('/images/hp.jpg');
+
+}
+
+html, body{
+    height: 100vh;
+}
+
+body{
+    background-color: var(--color-background);
+    font-size: 1.5rem;
+    
+}
+
+.material-tooltip {
+    padding: 10px 8px;
+    font-size: 1rem;
+    z-index: 1000;
+    background-color: transparent;
+    border-radius: 2px;
+    color: var(--color-text);
+    min-height: 36px;
+    line-height: 120%;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    max-width: calc(100% - 4px);
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    visibility: hidden;
+    background-color: var(--color-primary);
+    font-family: "Crimson Text";
+    font-size: 1em;
+    font-weight: 700;
+  }
+
+  .navbar{
+    background: var(--color-primary);
+}
+
+nav ul a{
+    font-size: 1.9rem;
+}
+
+.btn i, .btn-large i, .btn-small i, .btn-floating i, .btn-large i, .btn-small i, .btn-flat i {
+    font-size: 2.3rem;
+    line-height: inherit;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    display: block;
+    font-size: 3.3rem;
+   
+}
+
+@media(min-width:700px){
+    :root{
+        font-size: 62,5%; /*todo 1rem vai ser relativo a 10px*/
+    }
+
+}

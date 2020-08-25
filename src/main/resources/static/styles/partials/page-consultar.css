@@ -1,0 +1,39 @@
+#page-consultar{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/images/hp.jpg');
+
+}
+
+table{
+    background: var(--color-primary);
+    width: 80vw;
+    margin-left: 15rem;
+    
+}
+
+table thead{
+    font-size: 1.6rem;
+}
+
+table th,td{
+    border-collapse:collapse;
+	border: 1px solid black;
+	padding-top:0;
+	padding-bottom:0;
+}
+
+.card-panel .input-field > label{
+    font-size:2rem;
+    top: -1.2rem;
+}
+
+.card-panel{
+    background: var(--color-background);
+    width: 80vw;
+    margin-left: 14rem;
+    margin-top: 5rem;
+}
+h3{
+    background: var(--color-secondary-light);
+}

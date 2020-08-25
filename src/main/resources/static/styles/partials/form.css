@@ -1,0 +1,41 @@
+.container-form{
+    width: 100%;
+    max-width: 74rem;
+    border-radius: 0.8rem;
+    margin: 5.2rem auto 3.2rem;
+    padding-top: 6.4rem;
+    background: var(--color-background);
+}
+
+.container-form label{
+    font: 300 1.5rem 'Crimson Text';
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.container-form button{
+    color: var(--color-text);
+    background: var(--color-primary);
+    transition: background 0.2s;
+    font: 'Crimson Text';
+    margin-top: 2.5rem;
+}
+
+.container-form button:hover{
+    background: var(--color-primary-dark);
+}
+
+.input-field input[type=text]:focus + label{
+   color: var(--color-primary-dark) !important;
+}
+
+.input-field input[type=text]:focus{
+    border-bottom: 1px solid var(--color-primary-dark)!important;
+     box-shadow: 0 1px 0 0 var(--color-primary-dark) !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color:var(--color-text-secondary);
+    
+}
+

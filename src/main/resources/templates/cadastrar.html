@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt_br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio - PotterApi</title>
+    <link type="text/css" rel="stylesheet" href="/styles/materialize.css"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/partials/form.css">
+    <link rel="stylesheet" href="/styles/partials/page-cadastrar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body id="page-cadastrar">
+  <nav class="navbar">
+    <div class="nav-wrapper">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+            <li><a class="tooltipped" data-position="bottom" data-tooltip="Home" th:href="@{/}"><i class="material-icons">home</i></a></li>
+            <li><a class="tooltipped" data-position="bottom" data-tooltip="Consultar" th:href="@{consultar}"><i class="material-icons">person_search</i></a></li>
+          </ul>
+    </div>
+  </nav>
+  <ul id="mobile-demo" class="sidenav">
+    <li><a  th:href="@{/}"><i class="material-icons">home</i>Inicio</a></li>
+    <li><a  th:href="@{consultar}"><i class="material-icons">person_search</i>Consultar</a></li>
+  </ul>
+        
+    <div class="container-form">
+        <div class="row">
+            <div class="col 12">
+                <h3>Cadastre seu personagem</h3>
+            </div>
+        </div>
+       
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Nome" id="name" type="text" class="validate" th:field="*{name}>
+                  <label for="name">Nome</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Patrono" id="patrono" type="text" class="validate" th:field="*{patronus}>
+                    <label for="patrono">Patrono</label>
+                  </div>
+              </div>
+              <div class="input-field col s6">
+                  <select name="role" id="role">
+                      <option value="" disabled selected>Escolha o papel do seu personagem</option>
+                      <option value="1">Professor</option>
+                      <option value="2">Aluno</option>
+                      <option value="3">Auror</option>
+                      <option value="4">Comensal da Morte</option>
+                  </select>
+                  <label>Papel</label>
+              </div>
+              <div class="input-field col s6">
+                <select name="school" id="school">
+                    <option value="" disabled selected>Escolha uma escola</option>
+                    <option value="1">Ilvermorny</option>
+                    <option value="2">Uagadou</option>
+                    <option value="3">Durmstrang</option>
+                    <option value="4">Beauxbatons</option>
+                    <option value="5">Koldovstoretz</option>
+                    <option value="6">Castelobruxo</option>
+                    <option value="7">Hogwarts</option>
+                </select>
+                <label>Escola</label>
+            </div>
+            <div class="input-field">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+                    <i class="material-icons right">save</i>
+                  </button>
+            </div>
+            </form>
+          </div>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+          
+    </div>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+   
+    <!-- inicicializar o select do form -->
+    <script>
+        $(document).ready(function(){
+        $('select').formSelect();
+        $('.tooltipped').tooltip();
+        $('.sidenav').sidenav();
+        $('.modal').modal();
+        });
+    </script>
+</body>
+</html>
