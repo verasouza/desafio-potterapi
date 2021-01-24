@@ -1,0 +1,76 @@
+.consultar{
+  display: flex;
+  align-items: start;
+}
+
+.card-consultar{
+  width: 100%;
+  margin: 3.2rem 13.5rem;
+  text-align: center;
+  padding: 8px 10px;
+}
+
+form.search-characters{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+ 
+}
+
+form.search-characters legend{
+  width: 100%;
+  font-size: 25px;  
+  color: #580d0d;
+  font-weight: 700;
+
+  border-bottom: 1px solid #D3E2E5;
+  margin-bottom: 10px;
+  padding-bottom: 14px;
+  border:0;
+}
+
+form.search-characters .input-block label,
+form.search-characters .select-block label{
+  display: flex;
+  color: #580d0d;
+  margin: 5px 10px;
+  line-height: 25px;
+}
+
+form.search-characters .input-block input,
+form.search-characters .select-block select{
+  width: 100%;
+  background-color: #F5F8FA;
+  border:1px solid #D3E2E5;
+  border-radius: 20px;
+  color: #6B5959;
+  height: 35px;
+  padding: 0 16px;
+  vertical-align: middle;
+  margin:5px 10px;
+}
+form.search-characters .select-block select{
+  appearance: none;
+}
+
+form.search-characters button.search-button{
+  background-color: #873436;
+  border-radius: 22px;
+  text-decoration: none;
+  width: 15%;
+  height: 25%;
+  padding: 7px 7px;
+  color:  #fff;
+  transition: background 0.2s;
+  margin: 5px 0px -20px 15px;
+  
+}
+
+form.search-characters button.search-button:hover{
+  background-color: #3C1010;
+}
+
+form.search-characters .input-block input +
+form.search-characters .select-block select{
+  margin-left: 5px;
+}

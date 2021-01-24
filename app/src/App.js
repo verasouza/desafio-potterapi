@@ -9,12 +9,12 @@ import Consultar from './view/Consultar';
 
 function App() {
   return (
-    <div class="container">
+    <>
      
      <Router>
         <Navbar />
     <Switch>
-        <Route path="/home" component={Home} />
+        <Route path="/" exact component={Home} />
         <Route path="/cadastrar" component={Cadastrar} />
         <Route path="/consultar" component={Consultar} />
     </Switch>
@@ -23,7 +23,7 @@ function App() {
      
      
   
-    </div>
+    </>
  
   );
 }
