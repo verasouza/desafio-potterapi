@@ -1,21 +1,30 @@
-import React from 'react';
 import './App.css';
-import Home from './views/Home';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Navbar from './components/NavBar';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+import Home from './view/Home';
+import Navbar from "./components/Navbar";
+import Cadastrar from './view/Cadastrar';
+import Consultar from './view/Consultar';
+
 
 function App() {
   return (
-    <div className="page-container">
-      <div className="content-wrap">
+    <div class="container">
+     
+     <Router>
         <Navbar />
-        <Home />
-
-        <Footer />
-      </div>
-
+    <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/cadastrar" component={Cadastrar} />
+        <Route path="/consultar" component={Consultar} />
+    </Switch>
+    
+    </Router>
+     
+     
+  
     </div>
+ 
   );
 }
 
