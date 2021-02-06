@@ -1,0 +1,80 @@
+.cadastrar{
+  display: flex;
+  height: 100vh;
+  align-items: start;
+  justify-content: center;
+}
+
+.cadastrar .card-cadastrar{
+  
+  border-radius: 20px;
+  text-align: center;
+  padding: 8px 10px;
+  /* margin: 0px 20px; */
+  width: 62%;
+  height: 75%;
+  
+ 
+}
+.cadastrar main{
+  flex:1;
+}
+
+form.create-character-form{
+  width: 700px;
+  margin:64px auto;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  padding: 64px 80px;
+  background-color: #f5e1e1;
+}
+
+form fieldset{
+  border: 0;
+}
+
+form.create-character-form fieldset legend{
+  width: 100%;
+  font-size: 25px;
+  line-height: 27px;
+  color: #580d0d;
+  font-weight: 700;
+
+  border-bottom: 1px solid #D3E2E5;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+}
+
+form.create-character-form .input-block label{
+  display: flex;
+  color: #580d0d;
+  margin-left: 20px;
+  line-height: 24px;
+}
+
+form.create-character-form .input-block input{
+  width: 100%;
+  background: #F5F8FA;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  outline: none;
+  color: #6b5959;
+  height: 40px;
+  padding: 0 16px;
+}
+
+form.create-character-form button.save-button{
+  background-color: #873436;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 15%;
+  height: 25%;
+  padding: 7px 7px;
+  color:  #fff;
+  transition: background 0.2s;
+  margin-top: 15px
+}
+
+form.create-character-form button.save-button:hover{
+  background-color: #3C1010;
+}
