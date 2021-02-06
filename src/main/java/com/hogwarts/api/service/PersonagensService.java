@@ -16,7 +16,7 @@ public class PersonagensService {
 	@Autowired
 	private PersonagensRepository personagensRepository;
 
-	private Personagens findById(String id) {
+	public Personagens findById(String id) {
 		return personagensRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Personagem não encontrado"));
 	}
 
@@ -26,6 +26,11 @@ public class PersonagensService {
 
 	public Personagens save(Personagens personagem) {
 		return personagensRepository.save(personagem);
+	}
+	
+	public void delete(String id) {
+		Personagens personagem = findById(id);
+		personagensRepository.delete(personagem);
 	}
 
 	public Personagens update(String id, Personagens request) {

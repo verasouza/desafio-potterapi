@@ -1,0 +1,40 @@
+.personagem-card{
+  flex: 0 1 calc(25% - 1em);
+  box-sizing: border-box;
+  margin: 1rem .25em;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: white;
+  padding: 5px 3px 2px 3px;
+  border-radius: 5px;
+}
+
+h3{
+  font: 700 1.3rem Archivo;
+  color: #3b0c0c;
+}
+
+p{
+  font: normal 1rem Archivo;
+  line-height: 34px;
+}
+
+p.school{
+  font: bold 1rem Archivo;
+  color: #3b0c0c;
+  margin-top: 7px;
+}
+
+.card-content{
+  padding: 1rem 2rem;
+  text-align: left;
+}
+
+.card-content strong{
+  font: 900 1.1rem Archivo;
+}
+
+.card-content span{
+  font: normal 1rem Archivo;
+  margin: auto 4px;
+}

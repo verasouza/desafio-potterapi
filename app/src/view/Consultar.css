@@ -48,6 +48,7 @@ form.search-characters .select-block select{
   padding: 0 16px;
   vertical-align: middle;
   margin:5px 10px;
+  outline: none;
 }
 form.search-characters .select-block select{
   appearance: none;
@@ -73,4 +74,16 @@ form.search-characters button.search-button:hover{
 form.search-characters .input-block input +
 form.search-characters .select-block select{
   margin-left: 5px;
+}
+
+.container-characters{
+  max-width: 1100px;
+  margin: 30px auto auto;
+ 
+}
+
+.container-cards{
+  display: flex;
+ justify-content: space-between;
+ flex-wrap: wrap;
 }

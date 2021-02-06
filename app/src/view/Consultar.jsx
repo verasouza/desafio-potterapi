@@ -1,82 +1,161 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Consultar.css';
+import api from '../services/api';
+import Personagem from '../components/Personagem';
 
 function Consultar() {
-	const [houses, setHouses] = useState(false);
+	const [houses, setHouses] = useState('');
+	const [name, setName] = useState('');
+	const[school, setSchool] = useState('');
+	let url = 'characters/filter';
+
+	const[loading, setLoading] = useState(false);
+	const[error, setError]= useState(false);
+	const[characters, setCharacters] = useState(false);
+	const [filter, setFilter] = useState({
+		action: false
+	})
+	
+
+	useEffect(()=>{
+		async function fetchData(){
+			if(!loading && !characters){
+				getCharactersInfo();
+			}
+		}
+		
+		 fetchData()
+	}, [characters])
+
 
 	const casas = [
 		{
-			id: 1,
-			item: 'Grifinoria'
+			label: 'Grifinoria',
+			value: 'Grifinoria'
 		},
 		{
-			id: 2,
-			item: 'Ravenclaw'
+			label: 'Ravenclaw',
+			value: 'Ravenclaw'
 		},
 		{
-			id: 3,
-			item: 'Slytherin'
+			label: 'Slytherin',
+			value: 'Slytherin'
 		},
 		{
-			id: 4,
-			item: 'Lufa-Lufa'
+			label: 'Lufa-Lufa',
+			value: 'Lufa-Lufa'
 		},
 
 	];
 
 	const escolas = [
 		{
-			id: 1,
-			item: 'Hogwarts'
+			label: 'Hogwarts',
+			value: 'Hogwarts'
 		},
 		{
-			id: 2,
-			item: 'Ilvermorny'
+			label: 'Ilvermorny',
+			value: 'Ilvermorny'
 		},
 		{
-			id: 3,
-			item: 'Durmstrang'
+			label: 'Durmstrang',
+			value: 'Durmstrang'
 		},
 		{
-			id: 4,
-			item: 'Beauxbatons'
+			label: 'Beauxbatons',
+			value: 'Beauxbatons'
 		},
 
-	]
+	];
+
+	async function getCharactersInfo(){
+		setLoading(true);
+
+		const response = await api.get('characters/')
+			.then(response => {
+				setCharacters(response.data)
+			}).catch(() => {
+				setError(true);
+			});
+
+			setLoading(false);
+
+	}
+
+	function handleFilter(){
+
+	}
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+		
+		const body = {
+			name: name,
+			house: houses,
+			school: school
+		}
+
+		const response = await api.post(url, body)
+			.then(response => {
+				setCharacters(response.data)
+			}).catch(() => {
+				setError(true);
+			});
+
+
+	}
+
 
 	return (
 		<div className="consultar">
 			<div className="card-consultar">
 
 					
-					<form action="" method="get" className="search-characters">
+					<form action="" method="post" className="search-characters">
 					<legend> Buscar personagens</legend>
 						<div className="input-block">
 							<label htmlFor="name">Nome personagem:</label>
-							<input type="text" id="name" />
+							<input type="text" id="name" value={name} onChange={e => setName(e.target.value)} />
 						</div>
 						<div className="select-block">
 							<label htmlFor="school">Escola:</label>
-							<select name="school" id="school">
+							<select name="school" id="school" onChange={e => setSchool(e.target.value)}>
 								<option value="">Selecione uma opção</option>
 								{escolas.map((item, index)=>(
-									<option value={item.id}>{item.item}</option>
+									<option key={index} value={item.value}>{item.label}</option>
 								))}
 							</select>
 						</div>
 						<div className="select-block">
 							<label htmlFor="house">Casa:</label>
-							<select name="house" id="house">
+							<select name="house" id="house" onChange={e => setHouses(e.target.value)}>
 								<option value="">Selecione uma opção</option>
 								{casas.map((item, index)=>(
-									<option value={item.id}>{item.item}</option>
+									<option key={index} value={item.value}>{item.label}</option>
 								))}
 							</select>
 						</div>
 					
-							<button type="submit" className="search-button">Buscar</button>
+							<button type="submit" className="search-button" onClick={handleSubmit}>Buscar</button>
 				
 					</form>
+				<div className="container-characters">
+					<div className="container-cards">
+						{characters ? (
+							characters.map((item, index) => (
+								<Personagem
+									name={item.name}
+									house={item.house}
+									school={item.school}
+									role={item.role}
+									patronus={item.patronus} />
+							))
+
+						) : (
+								<h2>Carregando...</h2>
+							)}
+					</div>
+				</div>
 
 			</div>
 		</div>
